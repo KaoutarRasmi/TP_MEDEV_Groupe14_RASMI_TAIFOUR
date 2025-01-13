@@ -25,9 +25,15 @@
                                 <goal>report</goal> 
                             </goals> 
                         </execution> 
-                    </executions> 
-
-
+                        <execution>
+                            <id>generate-javadoc</id>
+                            <phase>package</phase>  <!-- Ou "verify" ou "install" -->
+                            <goals>
+                                <goal>javadoc</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
@@ -61,7 +67,14 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.8.0</version>
                 </plugin>
-                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
             </plugins> 
         </pluginManagement> 
     </build>
