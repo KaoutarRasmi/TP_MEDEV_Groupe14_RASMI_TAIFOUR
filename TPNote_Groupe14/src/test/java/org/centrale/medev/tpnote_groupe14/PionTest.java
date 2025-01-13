@@ -48,4 +48,31 @@ public class PionTest {
         assertEquals('B', pion.getCouleur(), "La couleur doit correspondre");
     }
     
+    /**
+     * Test des setters et getters pour la position
+     */
+    @Test
+    public void testSetGetPosition() {
+        Position pos1 = new Position(1, 'a');
+        Position pos2 = new Position(8, 'h');
+        Pion pion = new Pion(pos1, 'N');
+        
+        assertEquals(pos1, pion.getP(), "La position initiale doit correspondre");
+        
+        pion.setP(pos2);
+        assertEquals(pos2, pion.getP(), "La nouvelle position doit correspondre");
+    }
+    
+    /**
+     * Test des setters et getters pour la couleur
+     */
+    @Test
+    public void testSetGetCouleur() {
+        Pion pion = new Pion(new Position(1, 'a'), 'N');
+        
+        assertEquals('N', pion.getCouleur(), "La couleur initiale doit être N");
+        
+        pion.setCouleur('B');
+        assertEquals('B', pion.getCouleur(), "La nouvelle couleur doit être B");
+    }
 }

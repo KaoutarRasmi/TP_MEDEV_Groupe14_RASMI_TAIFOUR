@@ -41,7 +41,43 @@
          assertEquals('h', posMax.getLettre());
      }
      
-     
+     /**
+     * Test du getter et setter pour chiffre
+     */
+    @Test
+    public void testGetSetChiffre() {
+        Position position = new Position(1, 'a');
+        
+        // Test getter
+        assertEquals(1, position.getChifre());
+        
+        // Test setter
+        position.setChifre(5);
+        assertEquals(5, position.getChifre());
+        
+        // Test modification
+        position.setChifre(8);
+        assertEquals(8, position.getChifre());
+    }
+    
+    /**
+     * Test du getter et setter pour lettre
+     */
+    @Test
+    public void testGetSetLettre() {
+        Position position = new Position(1, 'a');
+        
+        // Test getter
+        assertEquals('a', position.getLettre());
+        
+        // Test setter
+        position.setLettre('e');
+        assertEquals('e', position.getLettre());
+        
+        // Test modification
+        position.setLettre('h');
+        assertEquals('h', position.getLettre());
+    }
      
      /**
       * Test de plusieurs positions différentes

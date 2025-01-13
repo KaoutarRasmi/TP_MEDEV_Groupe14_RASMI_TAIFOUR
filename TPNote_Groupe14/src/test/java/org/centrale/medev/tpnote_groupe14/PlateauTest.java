@@ -56,7 +56,24 @@ public class PlateauTest {
         assertEquals('N', plateau.getPlateau()[4][3].getCouleur());
     }
     
-    
+    /**
+     * Test des setters
+     */
+    @Test
+    public void testSetters() {
+        Joueur nouveauJoueur1 = new Joueur("NouveauJoueur1", 'N');
+        Joueur nouveauJoueur2 = new Joueur("NouveauJoueur2", 'B');
+        
+        plateau.setJoueur1(nouveauJoueur1);
+        plateau.setJoueur2(nouveauJoueur2);
+        
+        assertEquals(nouveauJoueur1, plateau.getJoueur1());
+        assertEquals(nouveauJoueur2, plateau.getJoueur2());
+        
+        Pion[][] nouveauPlateau = new Pion[8][8];
+        plateau.setPlateau(nouveauPlateau);
+        assertEquals(nouveauPlateau, plateau.getPlateau());
+    }
     
     /**
      * Test de capture valide
