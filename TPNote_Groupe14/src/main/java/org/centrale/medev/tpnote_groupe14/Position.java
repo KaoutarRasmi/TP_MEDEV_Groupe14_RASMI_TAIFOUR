@@ -17,8 +17,7 @@ public class Position {
     private int chifre;
     private char lettre;
 
-    //constructeur 
-    
+    //constructeur
     public Position(int chifre, char lettre) {
         this.chifre = chifre;
         this.lettre = lettre;
@@ -53,14 +52,4 @@ public class Position {
         this.lettre = lettre;
     }
     
-    /**
-     * deplacer un pion dans une position(x,c)
-     * @param x
-     * @param c
-     */
-    public void deplacer(int x, char c){
-        //vérification de la validité de la position de déplacement 
-        if(x>=1 && x<=8) this.chifre=x;
-        if(c>='a' && c<='h') this.lettre=c;
-    } 
 }
