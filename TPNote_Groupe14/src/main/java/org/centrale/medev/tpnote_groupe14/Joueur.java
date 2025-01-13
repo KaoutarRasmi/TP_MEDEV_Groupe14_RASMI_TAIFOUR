@@ -5,6 +5,7 @@
 package org.centrale.medev.tpnote_groupe14;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * class qui représente le joueur 
@@ -18,7 +19,7 @@ public class Joueur {
      * couleur: Couleur associée au joueur N ou B
      */
     private String nom;
-    private ArrayList<Pion> pions;
+    private List<Pion> pions;
     private char couleur; 
 
     // Constructeur
@@ -37,7 +38,7 @@ public class Joueur {
         this.nom = nom;
     }
 
-    public ArrayList<Pion> getPions() {
+    public List<Pion> getPions() {
         return pions;
     }
 
