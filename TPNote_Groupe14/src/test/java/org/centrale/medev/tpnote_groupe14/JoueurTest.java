@@ -165,15 +165,17 @@ public class JoueurTest {
      */
     @Test
     public void testJouerCoupInvalid() {
-        // Créer un plateau où toutes les cases sont déjà occupées
+        // Créer un plateau avec un pion déjà placé
         Plateau plateau = new Plateau(joueur, new Joueur("Bob", 'B'));
-        
+        Position position = new Position(1, 'a'); // Position occupée
+        Pion pionOccupe = new Pion(position, 'B'); // Pion de l'adversaire
+        plateau.getPlateau()[position.getChifre() - 1][position.getLettre() - 'a'] = pionOccupe;
+
         // Essayer de jouer dans une position déjà occupée
-        Position position = new Position(1, 'a'); // Cette position est déjà occupée
         joueur.jouerCoup(plateau, position);
-        
-        // Vérifier que la position n'a pas été modifiée (le pion ne doit pas être déplacé)
         Pion pion = plateau.getPlateau()[position.getChifre() - 1][position.getLettre() - 'a'];
-        assertNotNull(pion, "La position déjà occupée ne doit pas permettre d'ajouter un pion");
+        assertNotNull(pion, "La position déjà occupée ne doit pas permettre d'ajouter un pion.");
+        assertEquals(pionOccupe, pion, "Le pion placé doit être celui de l'adversaire (ou l'ancien pion).");
     }
+
 }
