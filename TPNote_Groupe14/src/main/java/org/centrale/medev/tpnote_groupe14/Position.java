@@ -16,6 +16,13 @@ public class Position {
      */
     private int chifre;
     private char lettre;
+
+    //constructeur 
+    
+    public Position(int chifre, char lettre) {
+        this.chifre = chifre;
+        this.lettre = lettre;
+    }
     
     /**
      * getter 
