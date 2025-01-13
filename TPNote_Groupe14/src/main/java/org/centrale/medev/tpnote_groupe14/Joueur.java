@@ -22,7 +22,7 @@ public class Joueur {
     //Constructeur 
     public Joueur(String nom) {
         this.nom = nom;
-        this.pions = new ArrayList<Pion>();
+        this.pions = new ArrayList<>();
     }
     
     //getter and setter 
