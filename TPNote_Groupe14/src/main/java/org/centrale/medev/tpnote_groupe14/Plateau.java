@@ -63,6 +63,79 @@ public class Plateau {
         plateau[4][3] = new Pion(new Position(5, 'd'), 'N'); // Position 5d
     }
 
+    
+    
+    /**
+     * Capture les pions adverses en fonction du coup joué
+     * @param position La position où le pion est posé
+     * @param couleur  La couleur du pion joué
+     * @return true si au moins un pion a été capturé, sinon false.
+     */
+    /*
+    public boolean capture(Position position, char couleur) {
+        boolean captureValide = false;
+
+        // Convertir la position (lettre, chiffre) en indices (ligne, colonne)
+        int x = position.getChifre() - 1; // Ligne (0-indexé)
+        int y = position.getLettre() - 'a'; // Colonne (0-indexé)
+
+        // Vérifier dans toutes les directions (8 directions possibles)
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                if (dx != 0 || dy != 0) { // Ignorer la direction (0, 0)
+                    captureValide |= captureDirection(x, y, dx, dy, couleur);
+                }
+            }
+        }
+
+        return captureValide;
+    }
+
+    /**
+     * Vérifie et capture dans une direction spécifique.
+     * @param x        La position initiale
+     * @param y        La position initiale
+     * @param dx       Direction suivant X
+     * @param dy       Direction suivant Y
+     * @param couleur  La couleur du pion 
+     * @return true si des pions ont été capturés dans cette direction.
+     */
+    /*
+    private boolean captureDirection(int x, int y, int dx, int dy, char couleur) {
+        char couleurAdverse = (couleur == 'N') ? 'B' : 'N';
+        ArrayList<Pion> pionsACapturer = new ArrayList<>();
+
+        int nx = x + dx;
+        int ny = y + dy;
+
+        while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
+            Pion currentPion = plateau[nx][ny];
+
+            if (currentPion == null) {
+                // Case vide : pas de capture possible dans cette direction
+                return false;
+            } else if (currentPion.getCouleur() == couleurAdverse) {
+                // Ajouter le pion adverse à la liste temporaire
+                pionsACapturer.add(currentPion);
+            } else if (currentPion.getCouleur() == couleur) {
+                // Si un pion de la même couleur est trouvé, retourner les pions
+                for (Pion p : pionsACapturer) {
+                    p.setCouleur(couleur);
+                }
+                return !pionsACapturer.isEmpty(); // Capture réussie si au moins un pion
+            } else {
+                // Autre cas, pas de capture possible
+                return false;
+            }
+
+            // Continuer dans la même direction
+            nx += dx;
+            ny += dy;
+        }
+
+        return false; // Si on sort de la boucle sans capturer
+    }
+    */
     /**
      * Capture les pions adverses en fonction du coup joué
      * @param position La position où le pion est posé
@@ -131,7 +204,6 @@ public class Plateau {
 
         return false; // Si on sort de la boucle sans capturer
     }
-    
     /**
      * affichage du plateau
      */
