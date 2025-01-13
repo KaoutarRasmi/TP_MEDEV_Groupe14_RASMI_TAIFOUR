@@ -10,6 +10,7 @@
  
  /**
   * Tests unitaires pour la classe Position
+  * @author kaoutar, mouad
   */
  public class PositionTest {
      

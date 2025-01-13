@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests unitaires pour la classe Pion
+ * @author kaoutar, mouad
  */
 public class PionTest {
     

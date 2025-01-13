@@ -5,8 +5,8 @@
 package org.centrale.medev.tpnote_groupe14;
 
 /**
- *
- * @author user
+ * Classe main du projet
+ * @author kaoutar, mouad
  */
 public class TPNote_Groupe14 {
     

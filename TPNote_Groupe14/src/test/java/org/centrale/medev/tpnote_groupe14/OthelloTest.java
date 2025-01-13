@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests unitaires pour la classe Othello
+ *
+ * @author kaoutar, mouad
  */
 public class OthelloTest {
     

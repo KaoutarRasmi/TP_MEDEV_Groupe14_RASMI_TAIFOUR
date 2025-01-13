@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests unitaires pour la classe Plateau
+ * @author kaoutar, mouad
  */
 public class PlateauTest {
     
