@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author kaoutar, mouad
  */
+
 public class JoueurTest {
 
     private Joueur joueur;
@@ -29,25 +30,19 @@ public class JoueurTest {
 
     @AfterEach
     public void tearDown() {
+        // Nettoyage après chaque test
         joueur = null;
     }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
+
     /**
      * Test of getNom method, of class Joueur.
      */
     @Test
     public void testGetNom() {
-        System.out.println("getNom");
-        String expResult = "testo";
-        String result = joueur.getNom();
-        assertEquals(expResult, result);
+        // Vérifier que le nom du joueur est correct
+        String expected = "testo";
+        String actual = joueur.getNom();
+        assertEquals(expected, actual, "Le nom du joueur doit être 'testo'");
     }
 
     /**
@@ -55,10 +50,10 @@ public class JoueurTest {
      */
     @Test
     public void testSetNom() {
-        System.out.println("setNom");
-        String nom = "Bob";
-        joueur.setNom(nom);
-        assertEquals(nom, joueur.getNom());
+        // Vérifier que l'on peut modifier le nom du joueur
+        String nouveauNom = "Bob";
+        joueur.setNom(nouveauNom);
+        assertEquals(nouveauNom, joueur.getNom(), "Le nom du joueur doit être modifié à 'Bob'");
     }
 
     /**
@@ -66,10 +61,10 @@ public class JoueurTest {
      */
     @Test
     public void testGetPions() {
-        System.out.println("getPions");
-        List<Pion> expResult = new ArrayList<>();
-        List<Pion> result = joueur.getPions();
-        assertEquals(expResult, result);
+        // Vérifier que la liste de pions est vide à l'initialisation
+        List<Pion> expected = new ArrayList<>();
+        List<Pion> actual = joueur.getPions();
+        assertEquals(expected, actual, "La liste des pions doit être vide initialement");
     }
 
     /**
@@ -77,12 +72,12 @@ public class JoueurTest {
      */
     @Test
     public void testSetPions() {
-        System.out.println("setPions");
+        // Vérifier qu'on peut modifier la liste des pions du joueur
         ArrayList<Pion> pions = new ArrayList<>();
         Pion pion = new Pion(new Position(1, 'a'), 'N');
         pions.add(pion);
         joueur.setPions(pions);
-        assertEquals(pions, joueur.getPions());
+        assertEquals(pions, joueur.getPions(), "La liste des pions ne correspond pas");
     }
 
     /**
@@ -90,10 +85,10 @@ public class JoueurTest {
      */
     @Test
     public void testGetCouleur() {
-        System.out.println("getCouleur");
-        char expResult = 'N';
-        char result = joueur.getCouleur();
-        assertEquals(expResult, result);
+        // Vérifier la couleur du joueur
+        char expected = 'N';
+        char actual = joueur.getCouleur();
+        assertEquals(expected, actual, "La couleur du joueur doit être 'N'");
     }
 
     /**
@@ -101,10 +96,10 @@ public class JoueurTest {
      */
     @Test
     public void testSetCouleur() {
-        System.out.println("setCouleur");
-        char couleur = 'B';
-        joueur.setCouleur(couleur);
-        assertEquals(couleur, joueur.getCouleur());
+        // Vérifier que la couleur peut être modifiée
+        char nouvelleCouleur = 'B';
+        joueur.setCouleur(nouvelleCouleur);
+        assertEquals(nouvelleCouleur, joueur.getCouleur(), "La couleur du joueur doit être modifiée à 'B'");
     }
 
     /**
@@ -112,10 +107,10 @@ public class JoueurTest {
      */
     @Test
     public void testAjouterPion() {
-        System.out.println("ajouterPion");
+        // Vérifier qu'un pion peut être ajouté à la liste des pions du joueur
         Pion pion = new Pion(new Position(1, 'a'), 'N');
         joueur.ajouterPion(pion);
-        assertTrue(joueur.getPions().contains(pion));
+        assertTrue(joueur.getPions().contains(pion), "Le pion ajouté doit être présent dans la liste des pions");
     }
 
     /**
@@ -123,13 +118,15 @@ public class JoueurTest {
      */
     @Test
     public void testJouerCoup() {
-        System.out.println("jouerCoup");
+        // Créer un plateau et jouer un coup sur celui-ci
         Plateau plateau = new Plateau(joueur, new Joueur("Bob", 'B'));
-        Position position = new Position(4, 'c'); 
+        Position position = new Position(4, 'c'); // Position sur le plateau
         joueur.jouerCoup(plateau, position);
+
+        // Vérifier que le pion a bien été placé sur le plateau à la position donnée
         Pion pion = plateau.getPlateau()[position.getChifre() - 1][position.getLettre() - 'a'];
-        assertNotNull(pion);
-        assertEquals(pion.getCouleur(), joueur.getCouleur());
+        assertNotNull(pion, "Le pion doit être placé sur le plateau");
+        assertEquals(pion.getCouleur(), joueur.getCouleur(), "La couleur du pion doit correspondre à celle du joueur");
     }
 
     /**
@@ -137,9 +134,38 @@ public class JoueurTest {
      */
     @Test
     public void testAfficherPions() {
-        System.out.println("afficherPions");
         Pion pion = new Pion(new Position(1, 'a'), 'N');
         joueur.ajouterPion(pion);
         joueur.afficherPions(); 
+        assertTrue(joueur.getPions().size() > 0, "Il doit y avoir des pions à afficher");
+    }
+
+    /**
+     * Test if the player can add multiple pions correctly.
+     */
+    @Test
+    public void testAjouterPlusieursPions() {
+        // Vérifier que plusieurs pions peuvent être ajoutés
+        Pion pion1 = new Pion(new Position(2, 'b'), 'N');
+        Pion pion2 = new Pion(new Position(3, 'c'), 'N');
+        joueur.ajouterPion(pion1);
+        joueur.ajouterPion(pion2);
+        assertTrue(joueur.getPions().contains(pion1), "Le pion 1 doit être présent dans la liste");
+        assertTrue(joueur.getPions().contains(pion2), "Le pion 2 doit être présent dans la liste");
+    }
+
+    /**
+     * Test if playing a move on a full plateau does not place a pion in an invalid position.
+     */
+    @Test
+    public void testJouerCoupInvalid() {
+        // Créer un plateau où toutes les cases sont déjà occupées
+        Plateau plateau = new Plateau(joueur, new Joueur("Bob", 'B'));
+        
+        // Essayer de jouer dans une position déjà occupée
+        Position position = new Position(1, 'a'); 
+        joueur.jouerCoup(plateau, position);
+        Pion pion = plateau.getPlateau()[position.getChifre() - 1][position.getLettre() - 'a'];
+        assertNotNull(pion, "La position déjà occupée ne doit pas permettre d'ajouter un pion");
     }
 }
