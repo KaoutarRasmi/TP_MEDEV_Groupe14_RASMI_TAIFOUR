@@ -26,6 +26,31 @@ public class Othello {
         plateau = new Plateau(joueur1, joueur2);
     }
     
+        /**
+     * Getter pour joueur1
+     * @return le premier joueur
+     */
+    public Joueur getJoueur1() {
+        return joueur1;
+    }
+
+    /**
+     * Getter pour joueur2
+     * @return le deuxième joueur
+     */
+    public Joueur getJoueur2() {
+        return joueur2;
+    }
+
+    /**
+     * Getter pour plateau
+     * @return le plateau de jeu
+     */
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    
     
     public void lancerJeu(){
 

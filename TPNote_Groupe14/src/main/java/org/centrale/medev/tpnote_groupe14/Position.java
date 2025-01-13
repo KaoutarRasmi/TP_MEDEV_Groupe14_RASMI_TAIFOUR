@@ -17,7 +17,11 @@ public class Position {
     private int chifre;
     private char lettre;
 
-    //constructeur
+    /**
+    * Constructeur de la classe Position
+    * @param chifre le chiffre de la position (1-8)
+    * @param lettre la lettre de la position (a-h)
+    */
     public Position(int chifre, char lettre) {
         this.chifre = chifre;
         this.lettre = lettre;
@@ -31,8 +35,8 @@ public class Position {
         return chifre;
     }
     /**
-     * set le chiffre de la position 
-     * @param chifre 
+     * set le chiffre de la position   
+     * @param chifre le chiffre à définir pour la position (1-8)
      */
     public void setChifre(int chifre) {
         this.chifre = chifre;
@@ -44,10 +48,11 @@ public class Position {
     public char getLettre() {
         return lettre;
     }
+    
     /**
-     * set la lettre de la position
-     * @param lettre 
-     */
+    * set la lettre de la position
+    * @param lettre la lettre à définir pour la position (a-h)
+    */
     public void setLettre(char lettre) {
         this.lettre = lettre;
     }

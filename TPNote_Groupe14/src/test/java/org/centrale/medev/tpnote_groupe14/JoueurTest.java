@@ -134,9 +134,13 @@ public class JoueurTest {
      */
     @Test
     public void testAfficherPions() {
+        // Ajouter un pion et vérifier l'affichage
         Pion pion = new Pion(new Position(1, 'a'), 'N');
         joueur.ajouterPion(pion);
-        joueur.afficherPions(); 
+        
+        // On ne peut pas tester l'affichage directement, donc on vérifie la taille de la liste des pions
+        // après l'appel de la méthode afficherPions, ou en fonction de l'effet indirect.
+        joueur.afficherPions(); // Cette méthode doit être testée visuellement (effet indirect)
         assertTrue(joueur.getPions().size() > 0, "Il doit y avoir des pions à afficher");
     }
 
@@ -150,6 +154,8 @@ public class JoueurTest {
         Pion pion2 = new Pion(new Position(3, 'c'), 'N');
         joueur.ajouterPion(pion1);
         joueur.ajouterPion(pion2);
+        
+        // Vérifier que les deux pions ont été ajoutés
         assertTrue(joueur.getPions().contains(pion1), "Le pion 1 doit être présent dans la liste");
         assertTrue(joueur.getPions().contains(pion2), "Le pion 2 doit être présent dans la liste");
     }
@@ -163,8 +169,10 @@ public class JoueurTest {
         Plateau plateau = new Plateau(joueur, new Joueur("Bob", 'B'));
         
         // Essayer de jouer dans une position déjà occupée
-        Position position = new Position(1, 'a'); 
+        Position position = new Position(1, 'a'); // Cette position est déjà occupée
         joueur.jouerCoup(plateau, position);
+        
+        // Vérifier que la position n'a pas été modifiée (le pion ne doit pas être déplacé)
         Pion pion = plateau.getPlateau()[position.getChifre() - 1][position.getLettre() - 'a'];
         assertNotNull(pion, "La position déjà occupée ne doit pas permettre d'ajouter un pion");
     }

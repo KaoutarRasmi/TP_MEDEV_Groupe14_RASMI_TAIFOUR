@@ -4,90 +4,48 @@
  */
 package org.centrale.medev.tpnote_groupe14;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * Tests unitaires pour la classe Pion
  * @author kaoutar, mouad
  */
 public class PionTest {
     
-    public PionTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
-     * Test of getP method, of class Pion.
+     * Test du constructeur avec position et couleur
      */
     @Test
-    public void testGetP() {
-        System.out.println("getP");
-        Pion instance = null;
-        Position expResult = null;
-        Position result = instance.getP();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConstructeurComplet() {
+        Position pos = new Position(4, 'd');
+        Pion pion = new Pion(pos, 'N');
+        
+        assertEquals(pos, pion.getP(), "La position doit correspondre");
+        assertEquals('N', pion.getCouleur(), "La couleur doit correspondre");
     }
-
+    
     /**
-     * Test of setP method, of class Pion.
+     * Test du constructeur avec position seulement
      */
     @Test
-    public void testSetP() {
-        System.out.println("setP");
-        Position p = null;
-        Pion instance = null;
-        instance.setP(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConstructeurPosition() {
+        Position pos = new Position(1, 'a');
+        Pion pion = new Pion(pos);
+        
+        assertEquals(pos, pion.getP(), "La position doit correspondre");
+        assertEquals('\0', pion.getCouleur(), "La couleur doit être la valeur par défaut char");
     }
-
+    
     /**
-     * Test of getCouleur method, of class Pion.
+     * Test du constructeur avec couleur seulement
      */
     @Test
-    public void testGetCouleur() {
-        System.out.println("getCouleur");
-        Pion instance = null;
-        char expResult = ' ';
-        char result = instance.getCouleur();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setCouleur method, of class Pion.
-     */
-    @Test
-    public void testSetCouleur() {
-        System.out.println("setCouleur");
-        char couleur = ' ';
-        Pion instance = null;
-        instance.setCouleur(couleur);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConstructeurCouleur() {
+        Pion pion = new Pion('B');
+        
+        assertNull(pion.getP(), "La position doit être null");
+        assertEquals('B', pion.getCouleur(), "La couleur doit correspondre");
     }
     
 }

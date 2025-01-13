@@ -63,6 +63,7 @@ public class Plateau {
         plateau[4][3] = new Pion(new Position(5, 'd'), 'N'); // Position 5d
     }
 
+    
     /**
      * Capture les pions adverses en fonction du coup joué
      * @param position La position où le pion est posé
@@ -131,7 +132,6 @@ public class Plateau {
 
         return false; // Si on sort de la boucle sans capturer
     }
-    
     /**
      * affichage du plateau
      */

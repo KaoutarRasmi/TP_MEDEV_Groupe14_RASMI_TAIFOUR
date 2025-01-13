@@ -4,130 +4,90 @@
  */
 package org.centrale.medev.tpnote_groupe14;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 /**
- *
+ * Tests unitaires pour la classe Plateau
  * @author kaoutar, mouad
  */
 public class PlateauTest {
-
+    
     private Plateau plateau;
     private Joueur joueur1;
     private Joueur joueur2;
-
+    
     @BeforeEach
     public void setUp() {
-        joueur1 = new Joueur("Alice", 'N');
-        joueur2 = new Joueur("Bob", 'B');
+        joueur1 = new Joueur("Joueur1", 'N');
+        joueur2 = new Joueur("Joueur2", 'B');
         plateau = new Plateau(joueur1, joueur2);
     }
-
-    @AfterEach
-    public void tearDown() {
-        plateau = null;
-        joueur1 = null;
-        joueur2 = null;
-    }
-     
-    @BeforeAll
-    public static void setUpClass() {
+    
+    /**
+     * Test du constructeur et de l'initialisation du plateau
+     */
+    @Test
+    public void testConstructeurEtInitialisation() {
+        // Vérification des joueurs
+        assertEquals(joueur1, plateau.getJoueur1());
+        assertEquals(joueur2, plateau.getJoueur2());
+        
+        // Vérification de la taille du plateau
+        assertEquals(8, plateau.getPlateau().length);
+        assertEquals(8, plateau.getPlateau()[0].length);
+        
+        // Vérification des positions initiales
+        // Position 4d (B)
+        assertNotNull(plateau.getPlateau()[3][3]);
+        assertEquals('B', plateau.getPlateau()[3][3].getCouleur());
+        
+        // Position 5e (B)
+        assertNotNull(plateau.getPlateau()[4][4]);
+        assertEquals('B', plateau.getPlateau()[4][4].getCouleur());
+        
+        // Position 4e (N)
+        assertNotNull(plateau.getPlateau()[3][4]);
+        assertEquals('N', plateau.getPlateau()[3][4].getCouleur());
+        
+        // Position 5d (N)
+        assertNotNull(plateau.getPlateau()[4][3]);
+        assertEquals('N', plateau.getPlateau()[4][3].getCouleur());
     }
     
-    @AfterAll
-    public static void tearDownClass() {
-    }
+    
+    
     /**
-     * Test of getJoueur1 method, of class Plateau.
+     * Test de capture valide
      */
     @Test
-    public void testGetJoueur1() {
-        System.out.println("getJoueur1");
-        Joueur expResult = joueur1;
-        Joueur result = plateau.getJoueur1();
-        assertEquals(expResult, result);
+    public void testCaptureValide() {
+        // Test d'une capture valide pour le joueur noir
+        Position positionCapture = new Position(4, 'c'); // Position permettant une capture
+        assertTrue(plateau.capture(positionCapture, 'N'));
+        
+        // Vérification que les pions ont été capturés
+        assertEquals('N', plateau.getPlateau()[3][3].getCouleur()); // Le pion blanc en 4d devrait être capturé
     }
-
+    
     /**
-     * Test of setJoueur1 method, of class Plateau.
+     * Test de capture invalide
      */
     @Test
-    public void testSetJoueur1() {
-        System.out.println("setJoueur1");
-        Joueur joueur1 = new Joueur("Charlie", 'B');
-        plateau.setJoueur1(joueur1);
-        assertEquals(joueur1, plateau.getJoueur1());
+    public void testCaptureInvalide() {
+        // Test d'une capture invalide (position éloignée)
+        Position positionInvalide = new Position(1, 'a');
+        assertFalse(plateau.capture(positionInvalide, 'N'));
     }
-
+    
+    
     /**
-     * Test of getJoueur2 method, of class Plateau.
-     */
-    @Test
-    public void testGetJoueur2() {
-        System.out.println("getJoueur2");
-        Joueur expResult = joueur2;
-        Joueur result = plateau.getJoueur2();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setJoueur2 method, of class Plateau.
-     */
-    @Test
-    public void testSetJoueur2() {
-        System.out.println("setJoueur2");
-        Joueur joueur2 = new Joueur("David", 'N');
-        plateau.setJoueur2(joueur2);
-        assertEquals(joueur2, plateau.getJoueur2());
-    }
-
-    /**
-     * Test of getPlateau method, of class Plateau.
-     */
-    @Test
-    public void testGetPlateau() {
-        System.out.println("getPlateau");
-        Pion[][] expResult = new Pion[8][8];
-        Pion[][] result = plateau.getPlateau();
-        assertArrayEquals(expResult, result);
-    }
-
-    /**
-     * Test of setPlateau method, of class Plateau.
-     */
-    @Test
-    public void testSetPlateau() {
-        System.out.println("setPlateau");
-        Pion[][] plateauTest = new Pion[8][8];
-        plateau.setPlateau(plateauTest);
-        assertArrayEquals(plateauTest, plateau.getPlateau());
-    }
-
-    /**
-     * Test of capture method, of class Plateau.
-     */
-    @Test
-    public void testCapture() {
-        System.out.println("capture");
-        Position position = new Position(4, 'd');
-        char couleur = 'N'; // Couleur du pion qui joue
-        boolean expResult = false; 
-        boolean result = plateau.capture(position, couleur);
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of afficherPlateau method, of class Plateau.
+     * Test de l'affichage du plateau
+     * Note: Ce test vérifie simplement que la méthode ne lève pas d'exception
      */
     @Test
     public void testAfficherPlateau() {
-        System.out.println("afficherPlateau");
-        plateau.afficherPlateau();
+        assertDoesNotThrow(() -> plateau.afficherPlateau());
     }
 }
