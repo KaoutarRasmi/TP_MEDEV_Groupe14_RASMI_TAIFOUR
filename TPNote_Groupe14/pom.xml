@@ -5,10 +5,35 @@
     <artifactId>TPNote_Groupe14</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <build> 
+        <plugins> 
+            <plugin> 
+                <groupId>org.jacoco</groupId> 
+                <artifactId>jacoco-maven-plugin</artifactId> 
+                <version >0.8.10</version> 
+                <executions> 
+                    <execution> 
+                        <goals> 
+                            <goal>prepare-agent</goal> 
+                        </goals> 
+                    </execution> 
+                    <execution> 
+                        <id>report</id> 
+                        <phase>verify</phase> 
+                        <goals> 
+                            <goal>report</goal> 
+                        </goals> 
+                    </execution> 
+                </executions> 
+            </plugin> 
+        </plugins> 
+    </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>org.centrale.medev.tpnote_groupe14.TPNote_Groupe14</exec.mainClass>
+        <sonar.organization>medev-tpnote-groupe14</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 </project>
